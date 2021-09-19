@@ -2,11 +2,13 @@
 :root {
   --font-family1: "Press Start 2P", cursive;
   --font-family2: "Open Sans", sans-serif;
-  --bg-color1: rgb(255, 185, 220);
-  --bg-color2: rgb(194, 177, 255);
+  --bg-color1: rgb(255, 232, 244);
+  --bg-color2: rgb(220, 211, 255);
   --font-color1: rgb(255, 102, 179);
-  --font-color2: rgb(119, 173, 255);
+  --font-color2: rgb(111, 138, 255);
   --font-color3: rgb(162, 0, 255);
+  --box-shadow1: 0px 1px 5px rgb(255, 136, 235);
+  --box-shadow2: 0px 2px 5px rgb(136, 148, 255);
 }
 
 body {
@@ -15,83 +17,103 @@ body {
 }
 
 h1 {
-  font-family: var(--font-family1);
   color: var(--font-color1);
+  font-family: var(--font-family1);
   font-size: 1.5rem;
   text-align: center;
-  margin-top:1rem;
-  padding: 1.5rem;
+  line-height: 3rem;
   word-wrap: break-word;
+  margin-top: 1rem;
+  padding: 1.5rem;
 }
-section, article{
-  display:flex;
+section,
+article {
+  margin:3rem;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .titulo {
-  font-family: var(--font-family1);
   color: var(--font-color2);
+  font-family: var(--font-family1);
   font-size: 1.25rem;
   text-align: center;
-  padding: 1rem;
   word-wrap: break-word;
-  width:40vw;
-  box-shadow: 0px 1px 5px rgb(136, 255, 249);
+  width: 35vw;
+  border-color: var(--font-color1);
+  border-style:dotted;
+  padding: 1rem;
 }
 
 .subtitulo {
-  font-family: var(--font-family1);
   color: var(--font-color2);
+  font-family: var(--font-family1);
   font-size: 1rem;
   text-align: center;
-  padding: 1rem;
   word-wrap: break-word;
+  padding: 1rem;
 }
 
-.texto{
+.texto {
+  color: var(--font-color2);
   font-family: var(--font-family2);
-  color: var(--font-color3);
-  font-size:1rem;
+  font-size: 1rem;
   text-align: justify;
 }
 
 form {
+  color: var(--font-color2);
   font-family: var(--font-family1);
-  color: var(--font-color3);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .inputNum {
-  width: 600px;
-  margin: 1rem;
+  width: 40rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-input{
-  margin:1rem;
+input {
+  margin: 1rem;
 }
 
-.form-control{
+.form-control {
+  text-align: center;
   border-radius: 5px;
   height: min-content;
-  padding:0.5rem;
-  text-align: center;
+  padding: 0.5rem;
 }
 
-.form-control::placeholder{
+.form-control::placeholder {
   font-size: 0.75rem;
   text-align: center;
 }
-button{
-font-family: var(--font-family2);
-font-size:1rem;
-margin:1rem;
-border-radius: 8px;
+button {
+  font-family: var(--font-family1);
+  font-size: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+  background-color: var(--bg-color2);
+  border-style: none;
+  box-shadow: var(--box-shadow2);
+  width: 150px;
+  height: 50px;
 }
 
-
+p#suma {
+  background-color: var(--bg-color1);
+  text-align: center;
+  width: 600px;
+  height: 3rem;
+  padding: 1rem;
+  box-shadow: var(--box-shadow1);
+}
+div.resultado p.subtitulo:first-child:after{
+  content: "\21E9";
+  color: var(--font-color2);
+  font-size: 2rem;
+}

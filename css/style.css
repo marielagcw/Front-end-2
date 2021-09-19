@@ -1,0 +1,202 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Press+Start+2P&display=swap");
+
+:root {
+  --color_principal: #f59e9b;
+  --color_secundario: #4e8cce;
+  /* --color_fondo_suave_principal: #f59e9b41;
+  --color_fondo_suave_secundario: #90b9e41a; */
+  --fuente_principal: "Gochi Hand", cursive;
+  --fuente_secundaria: "Press Start 2P", cursive;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  cursor: url("../img/cute_star.png") 15 15, auto;
+}
+
+/* <<<<<  ᓚᘏᗢ  Header   >>>>> */
+
+header {
+  color: var(--color_principal);
+  font-size: 2rem;
+  font-family: var(--fuente_principal);
+  text-align: center;
+  letter-spacing: 0.2rem;
+  background-image: url("../img/backgroundBlanco.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 95vh;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+i.fas {
+  color: rgb(224, 72, 72);
+  margin-left: 0.5rem;
+  animation-name: heart;
+  animation-duration: 3s;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+  animation-iteration-count: infinite;
+}
+@keyframes heart {
+  0%,
+  50% {
+    transform: scale(1.25);
+    color: rgb(255, 73, 185);
+  }
+  25%,
+  100% {
+    transform: scale(1);
+    color: rgb(224, 72, 72);
+  }
+}
+
+/*<<<<<  ᓚᘏᗢ  Main   >>>>> */
+
+main {
+  color: #ffffff;
+  text-align: center;
+}
+section {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section:nth-child(even) {
+  background-image: url("../img/backgroundCeleste.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+section:nth-child(odd) {
+  background-image: url("../img/backgroundRosa.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h2 {
+  font-family: var(--fuente_principal);
+  font-size: 2.5rem;
+  letter-spacing: 0.15rem;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section div {
+  margin-bottom:1.5rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+a {
+  color: white;
+  font-family: var(--fuente_secundaria);
+  font-size: 1rem;
+  text-decoration: none;
+  word-wrap: wrap;  
+  line-height: 2rem;
+  width: 300px;
+  height: 150px;
+  margin: 2rem;
+  padding:1rem;
+  box-shadow: 0rem 0rem 1rem rgba(96, 99, 243, 0.3);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: url("../img/cat.png") 30 10, auto;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+a:hover{
+  transform:scale(1.25);
+}
+a img {
+  width: fit-content;
+  height: 60%;
+  border-radius: 5px;
+  border-color: none;
+}
+
+/*<<<<<  ᓚᘏᗢ  Footer   >>>>> */
+
+footer {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/backgroundBlancoCierre.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--color_secundario);
+  font-family: "Dancing Script", cursive;
+  font-size: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+footer img {
+  height: 100%;
+  width: fit-content;
+}
+
+/* <<<<<  ᓚᘏᗢ  Media Query   >>>>> */
+
+@media screen and (max-width: 720px) {
+  header,
+  h1,
+  h2 {
+    font-size: 1.25rem;
+    word-wrap: wrap;
+  }
+  p{
+    font-size:1rem;
+  }
+  section:nth-child(even) {
+    background-image: none;
+    background-color: var(--color_secundario);
+  }
+  section:nth-child(odd) {
+    background-image: none;
+    background-color: var(--color_principal);
+  }
+  section div {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+  }
+  a {
+    box-shadow: 0rem 0rem 1rem rgb(255, 255, 255);
+    max-width:80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  a img{
+    width:auto;
+    height: 50%;
+  }
+  a:hover{
+    transform:scale(1.05);
+  }
+  footer,
+  header {
+    background-color: white;
+    background-image: none;
+  }
+  footer img {
+    width: 100%;
+    height: fit-content;
+  }
+}
