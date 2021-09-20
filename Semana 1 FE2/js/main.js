@@ -91,5 +91,40 @@ let jugarPiedraPapel = function (event) {
     : alert("Perdiste el juego 😓");
 };
 
+document
+  .getElementById("jugarPiedra")
+  .addEventListener("click", jugarPiedraPapel);
 
-document.getElementById("jugar").addEventListener("click", jugarPiedraPapel);
+//========================================================================================================================//
+
+// Clase 3 >>>>>>>>> ᓚᘏᗢ Casino >>>>>>>>> //
+
+// 1. Tragamonedas!
+
+// Crear una función que reciba un número que será la cantidad de aciertos del usuario sobre el total de casillas disponibles.
+// La función deberá devolver el monto del premio, el cual es proporcional al número de aciertos.
+
+let premioAcumulado = 0;
+
+function jugarTragamonedas(event) {
+  let resultadoTragamonedas = [];
+  const premioTotal = 2500;
+
+  let numero1 = parseInt(((Math.random() * 10) % 9) + 1);
+  let numero2 = parseInt(((Math.random() * 10) % 9) + 1);
+  let numero3 = parseInt(((Math.random() * 10) % 9) + 1);
+  resultadoTragamonedas = [numero1, numero2, numero3];
+  document.getElementById("tragamonedas").innerHTML = resultadoTragamonedas;
+
+  if ((numero1 == numero2) == numero3) {
+    premioAcumulado = premioTotal;
+    alert("Te ganaste el mayor! Ganaste $" + premioAcumulado);
+  } else if (numero1 == numero2 || numero2 == numero3 || numero1 == numero3) {
+    premioAcumulado = premioAcumulado + parseInt(premioTotal / 3);
+    alert("Bien! Llevas ganado $" + premioAcumulado);
+  } else alert("Esta vez no ganaste 😫");
+}
+
+document
+  .getElementById("jugarTragamonedas")
+  .addEventListener("click", jugarTragamonedas);
