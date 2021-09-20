@@ -62,6 +62,13 @@ article {
   text-align: justify;
 }
 
+.textoCentrado {
+  color: var(--font-color2);
+  font-family: var(--font-family2);
+  font-size: 1rem;
+  text-align: center;
+}
+
 form {
   color: var(--font-color2);
   font-family: var(--font-family1);
@@ -111,9 +118,4 @@ p#suma, #tragamonedas {
   height: 3rem;
   padding: 1rem;
   box-shadow: var(--box-shadow1);
-}
-div.resultado p.subtitulo:first-child:after{
-  content: "\21E9";
-  color: var(--font-color2);
-  font-size: 2rem;
 }

@@ -62,7 +62,12 @@ let jugarPiedraPapel = function (event) {
     if (usuario == computadora) {
       resultadoUsuario++;
       resultadoComputadora++;
-      alert("El resultado de la partida fue empate! 😮");
+      alert(
+        "El resultado de la partida fue empate! 😮" +
+          " Llevas acumulados " +
+          resultadoUsuario +
+          " puntos."
+      );
 
       //en caso de que el usuario pierda
     } else if (
@@ -71,7 +76,12 @@ let jugarPiedraPapel = function (event) {
       (usuario == 3 && computadora == 1)
     ) {
       resultadoComputadora++;
-      alert("El resultado de la partida fue derrota! 😭");
+      alert(
+        "El resultado de la partida fue derrota! 😭" +
+          " Llevas acumulados " +
+          resultadoUsuario +
+          " puntos."
+      );
 
       //en caso de que el usuario gane
     } else if (
@@ -80,15 +90,47 @@ let jugarPiedraPapel = function (event) {
       (usuario == 1 && computadora == 3)
     ) {
       resultadoUsuario++;
-      alert("El resultado de la partida fue triunfo! 😁");
+      alert(
+        "El resultado de la partida fue triunfo! 😁" +
+          " Llevas acumulados " +
+          resultadoUsuario +
+          " puntos."
+      );
     } else {
-      alert("El ingreso no fue válido.");
+      alert(
+        "El ingreso no fue válido.\nPerdiste tu oportunidad esta vez.\nLa compu suma un punto 🙈"
+      );
+      resultadoComputadora++;
     }
   }
 
-  resultadoUsuario > resultadoComputadora + 1
-    ? alert("Ganaste el juego! 😁")
-    : alert("Perdiste el juego 😓");
+  if (resultadoUsuario == resultadoComputadora) {
+    alert(
+      "Hubo un empate 😅 Tu total es " +
+        resultadoUsuario +
+        " puntos " +
+        " y el total de la compu es " +
+        resultadoComputadora +
+        " puntos."
+    );
+  }
+  resultadoUsuario > resultadoComputadora
+    ? alert(
+        "Ganaste el juego! 😁 Tu total es " +
+          resultadoUsuario +
+          " puntos " +
+          " y el total de la compu es " +
+          resultadoComputadora +
+          " puntos."
+      )
+    : alert(
+        "Perdiste el juego 😓 Tu total es " +
+          resultadoUsuario +
+          " puntos " +
+          " y el total de la compu es " +
+          resultadoComputadora +
+          " puntos."
+      );
 };
 
 document
@@ -105,26 +147,38 @@ document
 // La función deberá devolver el monto del premio, el cual es proporcional al número de aciertos.
 
 let premioAcumulado = 0;
+let cantidadAciertosAcumulados = 0;
+let cantidadJugadas = 1;
 
 function jugarTragamonedas(event) {
-  let resultadoTragamonedas = [];
   const premioTotal = 2500;
-
+  let resultadoTragamonedas = [];
+  
   let numero1 = parseInt(((Math.random() * 10) % 9) + 1);
   let numero2 = parseInt(((Math.random() * 10) % 9) + 1);
   let numero3 = parseInt(((Math.random() * 10) % 9) + 1);
-  resultadoTragamonedas = [numero1, numero2, numero3];
+  let numero4 = parseInt(((Math.random() * 10) % 9) + 1);
+  
+  resultadoTragamonedas = [numero1, numero2, numero3, numero4];
   document.getElementById("tragamonedas").innerHTML = resultadoTragamonedas;
 
-  if ((numero1 == numero2) == numero3) {
+  if (numero1 == numero2 && numero1 == numero3 && numero1 == numero4) {
     premioAcumulado = premioTotal;
-    alert("Te ganaste el mayor! Ganaste $" + premioAcumulado);
-  } else if (numero1 == numero2 || numero2 == numero3 || numero1 == numero3) {
-    premioAcumulado = premioAcumulado + parseInt(premioTotal / 3);
-    alert("Bien! Llevas ganado $" + premioAcumulado);
-  } else alert("Esta vez no ganaste 😫");
+    cantidadAciertosAcumulados++;
+    alert("EXCELENTE! Te ganaste el premio mayor de $2.500! ✨🎉 Tu total ganado es $" + premioAcumulado + " Llevas " + cantidadAciertosAcumulados + " de aciertos hasta el momento.");
+  } else if (numero1 == numero2 || numero2 == numero3 || numero3 == numero4 ) {
+    let premioActual = 100 + parseInt(premioTotal*(cantidadAciertosAcumulados/cantidadJugadas));
+    premioAcumulado = premioAcumulado + premioActual;
+    cantidadAciertosAcumulados++;
+    alert("BIEN! 😁 Ganaste $" + premioActual + " Llevas ganado $" + premioAcumulado + " Llevas " + cantidadAciertosAcumulados + " de aciertos hasta el momento.");
+  } else alert("Esta vez no ganaste 😫 Hasta el momento llevas $" + premioAcumulado + " y " + cantidadAciertosAcumulados + " aciertos.");
+   cantidadJugadas++;
 }
 
 document
   .getElementById("jugarTragamonedas")
   .addEventListener("click", jugarTragamonedas);
+
+  // 2. Lotería
+  // Crear un programa que consista en una apuesta donde el usuario tenga que ingresar un objeto o lugar con el que soñó ese día, para que luego lo muestre en pantalla y se calcule aleatoriamente un resultado numérico con 4 posibles casos de premios que pueda ganar: si el resultado es 0, gana $1.000, si es 1,gana $10.000; si es 2 gana $10.000, y si es 3 gana $100.000.
+

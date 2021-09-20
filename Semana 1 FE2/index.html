@@ -24,18 +24,18 @@
           numero, y asi hasta terminar de recorrer el array.
         </p>
         <div class="mb-3">
-          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Seleccionar un número" />
-          <input type="number" class="form-control" id="exampleFormControlInput2" placeholder="Seleccionar un número" />
-          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Seleccionar un número" />
-          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Seleccionar un número" />
-          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Seleccionar un número" />
-          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Seleccionar un número" />
+          <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Ingresar número" />
+          <input type="number" class="form-control" id="exampleFormControlInput2" placeholder="Ingresar número" />
+          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Ingresar número" />
+          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Ingresar número" />
+          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Ingresar número" />
+          <input type="number" class="form-control" id="exampleFormControlInput3" placeholder="Ingresar número" />
         </div>
         <button id="ejecutar">Ejecutar</button>
         <div class="resultado">
-          <p class="subtitulo">Resultado
+          <p class="subtitulo">
+            <p class="textoCentrado">↓ Resultados de cada suma ↓</p>
           <p id="suma"></p>
-          </p>
           </p>
         </div>
       </div>
@@ -61,9 +61,13 @@
     <div class="seccionJuego">
       <p class="titulo">Clase 3</p>
       <p class="subtitulo">Tragamonedas!</p>
-      <p class="texto">Crear una función que reciba un número que será la cantidad de aciertos del usuario sobre el total de casillas
-        disponibles. La función deberá devolver el monto del premio, el cual es proporcional al número de aciertos.</p>
-        <p id="tragamonedas"></p>
+      <p class="texto">Crear una función que reciba un número que será la cantidad de aciertos del usuario sobre el total de casillas disponibles. La función deberá devolver el monto del premio, el cual es proporcional al número de aciertos. <br>
+      <br>
+      Importante! Vas a ver primero tu resultado (si ganaste o perdiste, cuánto dinero ganaste hasta el momento y la cantidad de aciertos acumulados) antes de ver los números que salieron sorteados 😉
+      <br> Tené en cuenta que los premios son progresivos y sólo empezás a ganar después del primer acierto 😮
+      </p>
+      <p class="textoCentrado">↓ Estos son los números sorteados ↓</p>
+        <p id="tragamonedas" class="subtitulo"></p>
         <button id="jugarTragamonedas">Jugar</button>
     </div>
 
