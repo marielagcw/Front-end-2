@@ -64,7 +64,7 @@ let jugarPiedraPapel = function (event) {
       resultadoComputadora++;
       alert(
         "El resultado de la partida fue empate! 😮" +
-          " Llevas acumulados " +
+          " \nLlevas acumulados " +
           resultadoUsuario +
           " puntos."
       );
@@ -78,7 +78,7 @@ let jugarPiedraPapel = function (event) {
       resultadoComputadora++;
       alert(
         "El resultado de la partida fue derrota! 😭" +
-          " Llevas acumulados " +
+          " \nLlevas acumulados " +
           resultadoUsuario +
           " puntos."
       );
@@ -92,7 +92,7 @@ let jugarPiedraPapel = function (event) {
       resultadoUsuario++;
       alert(
         "El resultado de la partida fue triunfo! 😁" +
-          " Llevas acumulados " +
+          " \nLlevas acumulados " +
           resultadoUsuario +
           " puntos."
       );
@@ -106,17 +106,17 @@ let jugarPiedraPapel = function (event) {
 
   if (resultadoUsuario == resultadoComputadora) {
     alert(
-      "Hubo un empate 😅 Tu total es " +
+      "Hubo un empate 😅 \nTu total es " +
         resultadoUsuario +
         " puntos " +
         " y el total de la compu es " +
         resultadoComputadora +
         " puntos."
     );
-  }
+  }else {
   resultadoUsuario > resultadoComputadora
     ? alert(
-        "Ganaste el juego! 😁 Tu total es " +
+        "Ganaste el juego! 😁 \nTu total es " +
           resultadoUsuario +
           " puntos " +
           " y el total de la compu es " +
@@ -124,13 +124,14 @@ let jugarPiedraPapel = function (event) {
           " puntos."
       )
     : alert(
-        "Perdiste el juego 😓 Tu total es " +
+        "Perdiste el juego 😓 \nTu total es " +
           resultadoUsuario +
           " puntos " +
           " y el total de la compu es " +
           resultadoComputadora +
           " puntos."
       );
+    }
 };
 
 document
@@ -151,21 +152,28 @@ let cantidadAciertosAcumulados = 0;
 let cantidadJugadas = 1;
 
 function jugarTragamonedas(event) {
-  const premioTotal = 2500;
   let resultadoTragamonedas = [];
+  const premioTotal = 2500;
   
   let numero1 = parseInt(((Math.random() * 10) % 9) + 1);
   let numero2 = parseInt(((Math.random() * 10) % 9) + 1);
   let numero3 = parseInt(((Math.random() * 10) % 9) + 1);
   let numero4 = parseInt(((Math.random() * 10) % 9) + 1);
   
+  //variables para probar el premio mayor
+  // let numero1 =1;
+  // let numero2 =1;
+  // let numero3 =1;
+  // let numero4 =1;
+  
   resultadoTragamonedas = [numero1, numero2, numero3, numero4];
   document.getElementById("tragamonedas").innerHTML = resultadoTragamonedas;
 
   if (numero1 == numero2 && numero1 == numero3 && numero1 == numero4) {
-    premioAcumulado = premioTotal;
+    premioActual= premioTotal*(1+cantidadAciertosAcumulados);
+    premioAcumulado = premioAcumulado + premioActual;
     cantidadAciertosAcumulados++;
-    alert("EXCELENTE! Te ganaste el premio mayor de $2.500! ✨🎉 Tu total ganado es $" + premioAcumulado + " Llevas " + cantidadAciertosAcumulados + " de aciertos hasta el momento.");
+    alert("EXCELENTE! Te ganaste el premio mayor de " + premioActual + " ✨🎉 Tu total ganado es $" + premioAcumulado + " Llevas " + cantidadAciertosAcumulados + " de aciertos hasta el momento.");
   } else if (numero1 == numero2 || numero2 == numero3 || numero3 == numero4 ) {
     let premioActual = 100 + parseInt(premioTotal*(cantidadAciertosAcumulados/cantidadJugadas));
     premioAcumulado = premioAcumulado + premioActual;
