@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400;700&family=Gamja+Flower&display=swap");
+
+:root {
+  --fuente_titulo: "Gamja Flower", cursive;
+  --fuente_texto: "Gaegu", cursive;
+  --color_fuente: rgb(255, 25, 255);
+  --color_fuente_contraste: rgb(25, 201, 255);
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* >>>>>>>>>>>>> ᓚᘏᗢ Header <<<<<<<<<<<<<<<< */
+
+header {
+  font-family: var(--fuente_titulo);
+  font-size: 3rem;
+  color: var(--color_fuente);
+  height: 12.5rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* >>>>>>>>>>>>> ᓚᘏᗢ Main <<<<<<<<<<<<<<<< */
+
+section h1 {
+  font-family: var(--fuente_titulo);
+  font-size: 2rem;
+  color: var(--color_fuente);
+  display: flex;
+  justify-content: center;
+}
+
+/* >>>>>>>>>>>>> ᓚᘏᗢ Mascotita <<<<<<<<<<<<<<<< */
+
+/* acá van las reacciones y la animación de la mascotita */
+
+/* >>>>>>>>>>>>> ᓚᘏᗢ Juego de interacción <<<<<<<<<<<<<<<< */
+
+section.jugar {
+  font-family: var(--fuente_texto);
+  font-size: 1.5rem;
+  color: var(--color_fuente_contraste);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jugar h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.botones {
+  padding: 2rem;
+  width: 80vw;
+  display: flex;
+  justify-content: space-around;
+}
+.boton {
+  font-family: var(--fuente_texto);
+  color: var(--color_fuente);
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.849);
+  padding: 0.5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 25vh;
+  border-style: none;
+  box-shadow: 0px 0px 10px 0.25px var(--color_fuente_contraste);
+}
+
+/* >>>>>>>>>>>>> ᓚᘏᗢ Resultados del juego: historiales <<<<<<<<<<<<<<<< */
+
+section.estado {
+  font-family: var(--fuente_texto);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color_fuente_contraste);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
