@@ -75,6 +75,11 @@ section.jugar {
   box-shadow: 0px 0px 10px 0.25px var(--color_fuente_contraste);
 }
 
+.boton:active{
+    transform: scale(1.15);
+    box-shadow: 0px 0px 10px 1px var(--color_fuente_contraste);
+}
+
 /* >>>>>>>>>>>>> ᓚᘏᗢ Resultados del juego: historiales <<<<<<<<<<<<<<<< */
 
 section.estado {

@@ -26,10 +26,10 @@ const petIt = {
       foodPoints = (foodPortionsDay - 6) * -0.5;
     } else if (foodPortionsDay === 0) {
       foodPoints = -0.75;
-    } else if (foodPortionsDay < 3){
+    } else if (foodPortionsDay < 3) {
       foodPoints = foodPortionsDay * -0.75;
       this.hunger = true;
-    } 
+    }
     this.health = this.health + foodPoints;
     this.foodHistory.push(foodPoints);
     // console.log(this.foodHistory);
@@ -68,7 +68,7 @@ const petIt = {
       this.live = true;
     } else this.live = false;
   },
-  
+
   livingDay: function livingDay(
     foodPortionsDay,
     exerciseHoursDay,
@@ -118,29 +118,60 @@ const petIt = {
 // petIt.itLives();
 // console.log(petIt.live);
 
-console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Día 1 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
+//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Día 1 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
 // parámetros a pasar: foodPortionsDay, exerciseHoursDay, recreationMomentsDay
-petIt.livingDay(3, 2, 1);
-console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 2 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-petIt.livingDay(3, 3, 3);
-console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 3 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-petIt.livingDay(1, 3, 3);
-
-
+//petIt.livingDay(3, 2, 1);
+//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 2 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
+//petIt.livingDay(3, 3, 3);
+//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 3 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
+//petIt.livingDay(1, 3, 3);
 
 //▶▷▶▷▶▷▶▷▶∾∾∾∾∾∾∾∾∾⊱ ᓚᘏᗢ  Uniendo al front ♥  ⊰∾∾∾∾∾∾∾∾∾∾◀◁◀◁◀◁◀◁◀
 
-// captamos los botones 
+// ==================== captamos los botones ======================= //
 
-let botonAlimentar = this.document.querySelector(".botonAlimentar"); //es una clase
+let botonAlimentar = this.document.querySelector(".botonAlimentar");
 let botonEjercitar = this.document.querySelector(".botonEjercitar");
-let botonPasear = this.document.querySelector("botonPasear");
+let botonPasear = this.document.querySelector(".botonPasear");
 
-//transformamos los clicks en parámetros
+// ========== transformamos los clicks en parámetros ================ //
 
-let porciones = 0;
-let capturarClickAlimentar = botonAlimentar.addEventListener("click", 
-function(){
+// >>>>>>>>>>>> Alimentar >>>>>>>>>>>>> //
+let foodPortionsDay = 0;
+let alimentarDia = function alimentarDia(evento) {
+  foodPortionsDay++;
+  console.log(foodPortionsDay);
+};
 
-}
-)
+botonAlimentar.addEventListener("click", alimentarDia);
+
+// >>>>>>>>>>>> Ejercitar >>>>>>>>>>>>> //
+let exerciseHoursDay = 0;
+let ejercitarDia = function ejercitarDia(evento) {
+  exerciseHoursDay++;
+  console.log(exerciseHoursDay);
+};
+
+botonEjercitar.addEventListener("click", ejercitarDia);
+
+// >>>>>>>>>>>> Pasear >>>>>>>>>>>>> //
+let momentsSociabilityDay = 0;
+let pasearDia = function pasearDia(evento) {
+  momentsSociabilityDay++;
+  console.log(momentsSociabilityDay);
+};
+
+botonPasear.addEventListener("click", pasearDia);
+
+// ========== It´s alive! ================== //
+
+window.addEventListener("load", function () {
+  this.setInterval(function () {
+    petIt.livingDay(foodPortionsDay, exerciseHoursDay, momentsSociabilityDay);
+    foodPortionsDay = 0;
+    exerciseHoursDay =0;
+    momentsSociabilityDay = 0;
+    console.log(petIt);
+    alert("pasaron 5000 ms");
+  }, 5000);
+});
