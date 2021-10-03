@@ -172,6 +172,6 @@ window.addEventListener("load", function () {
     exerciseHoursDay =0;
     momentsSociabilityDay = 0;
     console.log(petIt);
-    alert("pasaron 5000 ms");
+    alert("pasaron 8000 ms");
   }, 5000);
 });
