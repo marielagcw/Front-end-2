@@ -84,7 +84,7 @@ botonPasear.addEventListener("click", function pasear(event) {
 });
 
 // ========== It´s alive! ================== //
-let time = 3000;
+let time = 9000;
 let viviendo;
 let intervaloJuego;
 
