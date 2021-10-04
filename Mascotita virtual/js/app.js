@@ -8,7 +8,7 @@
 //▶▷▶▷▶▷▶▷▶∾∾∾∾∾∾∾∾∾⊱ ᓚᘏᗢ  Inicio  ⊰∾∾∾∾∾∾∾∾∾∾◀◁◀◁◀◁◀◁◀
 
 const petIt = {
-  name: "",
+  name: "", // lo define el usuario a través de un prompt
   age: 0,
   live: false,
   health: 0,
@@ -31,6 +31,12 @@ const petIt = {
   sociability: function sociability(momentsSociability) {
     this.sociabilityMomentDay++;
   },
+
+   // ================  (❁´◡`❁) Función Chequeo Salud =========================== //
+   // ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+   //función que hace lo siguiente:
+   // → tiene un botón que permite chequear el estado de salud de la mascotita en cualquier momento
+   // → cada vez que se le da de comer, o hace ejercicio, o pasea, se chequea la salud, si hay un problema se da un aviso (la mascotita dice que se siente mal)
 
   // ================  (❁´◡`❁) Función ¿Vive??? =========================== //
   itLives: function itLives() {
@@ -60,6 +66,8 @@ let botonPasear = this.document.querySelector(".botonPasear");
 // ========== transformamos los clicks en parámetros ================ //
 
 // >>>>>>>>>>>> Alimentar >>>>>>>>>>>>> //
+// ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+// → se puede configurar un alerta que recuerde darle de comer
 
 botonAlimentar.addEventListener("click", function darPorcion(event) {
   petIt.eat(1);
@@ -68,6 +76,8 @@ botonAlimentar.addEventListener("click", function darPorcion(event) {
 });
 
 // >>>>>>>>>>>> Ejercitar >>>>>>>>>>>>> //
+// ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+// → se puede configurar un alerta que recuerde hacerle hacer ejercicio
 
 botonEjercitar.addEventListener("click", function ejercitarHora(event) {
   petIt.exercise(1);
@@ -76,6 +86,8 @@ botonEjercitar.addEventListener("click", function ejercitarHora(event) {
 });
 
 // >>>>>>>>>>>> Pasear >>>>>>>>>>>>> //
+// ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+// → se puede configurar un alerta que recuerde sacarlo a pasear
 
 botonPasear.addEventListener("click", function pasear(event) {
   petIt.sociability(1);
@@ -83,8 +95,11 @@ botonPasear.addEventListener("click", function pasear(event) {
   console.log("funciona");
 });
 
-// ========== It´s alive! ================== //
-let time = 9000;
+// =========================== It´s alive! =============================== //
+// ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+// → se puede configurar cuánto dura un día de vida → tener en cuenta las medidas de conversión (el tiempo del intervalo es en milisegundos, pero al usuario se le pide que ingrese horas/minutos/decidir
+
+let time = 9000; 
 let viviendo;
 let intervaloJuego;
 
@@ -112,7 +127,6 @@ function detenerVida() {
   let jugarOtraVez = confirm(petIt.name + " ya no está con nosotros... \n ＞﹏＜ \n Querés volver a jugar?");
   return jugarOtraVez;
 }
-
 function jugar() {
   let estadoMiMascotita = document.querySelector(".estado");
   estadoMiMascotita.innerHTML = `<p class="subtitulo">Vamos a jugar</p>`
@@ -130,4 +144,10 @@ function jugar() {
 }
 
 botonJugar.addEventListener("click", jugar);
+
+// ▶▷▶▷▶▷▶▷▶ Pendiente! ▶▷▶▷▶▷▶▷▶
+// que los botones se habiliten solo después de clickear en "jugar"
+// explicación de cómo es el juego
+// estados de ánimo
+// ordenar el código (falta modular o armar un objeto para las interacciones del usuario)
 
