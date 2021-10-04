@@ -8,128 +8,51 @@
 //▶▷▶▷▶▷▶▷▶∾∾∾∾∾∾∾∾∾⊱ ᓚᘏᗢ  Inicio  ⊰∾∾∾∾∾∾∾∾∾∾◀◁◀◁◀◁◀◁◀
 
 const petIt = {
-  name: "PetIt",
-  ageDays: 1,
-  live: true,
-  health: 6,
+  name: "",
+  age: 0,
+  live: false,
+  health: 0,
   hunger: true,
-  foodHistory: [],
-  exerciseHistory: [],
-  sociabilityHistory: [],
+  foodPortionDay: 0,
+  exerciseHourDay: 0,
+  sociabilityMomentDay: 0,
 
-  eat: function eat(foodPortionsDay) {
-    let foodPoints = 0;
-    if (foodPortionsDay >= 3 && foodPortionsDay <= 6) {
-      foodPoints = foodPortionsDay;
-      this.hunger = false;
-    } else if (foodPortionsDay > 6) {
-      foodPoints = (foodPortionsDay - 6) * -0.5;
-    } else if (foodPortionsDay === 0) {
-      foodPoints = -0.75;
-    } else if (foodPortionsDay < 3) {
-      foodPoints = foodPortionsDay * -0.75;
-      this.hunger = true;
-    }
-    this.health = this.health + foodPoints;
-    this.foodHistory.push(foodPoints);
-    // console.log(this.foodHistory);
+  // ================  (❁´◡`❁) Función comer =========================== //
+  eat: function eat(foodPortion) {
+    this.foodPortionDay++;
   },
 
+  // ================  (❁´◡`❁) Función ejercitarse =========================== //
   exercise: function exercise(exerciseHoursDay, age) {
-    let exercisePoints = 0;
-    if (
-      (age < 18 && exerciseHoursDay >= 2 && exerciseHoursDay <= 8) ||
-      (age >= 18 && exerciseHoursDay >= 1 && exerciseHoursDay <= 8)
-    ) {
-      exercisePoints = exerciseHoursDay;
-    } else exercisePoints = exerciseHoursDay * -0.5;
-    this.health = this.health + exercisePoints;
-    this.exerciseHistory.push(exercisePoints);
-    // console.log(this.exerciseHistory);
+    this.exerciseHourDay++;
   },
 
+  // ================  (❁´◡`❁) Función sociabilizar =========================== //
   sociability: function sociability(momentsSociability) {
-    let sociabilityPoints = 0;
-    if (momentsSociability >= 1 && momentsSociability <= 10) {
-      sociabilityPoints = momentsSociability;
-    } else if (momentsSociability === 0) {
-      sociabilityPoints = -0.5;
-    } else sociabilityPoints = momentsSociability * -0.5;
-    this.health = this.health + sociabilityPoints;
-    this.sociabilityHistory.push(sociabilityPoints);
-    // console.log(this.sociabilityHistory);
+    this.sociabilityMomentDay++;
   },
 
+  // ================  (❁´◡`❁) Función ¿Vive??? =========================== //
   itLives: function itLives() {
     if (
-      (this.ageDays * 6 <= this.health && this.ageDays < 18) ||
-      (this.ageDays * 5 <= this.health && this.ageDays >= 18)
+      (this.age * 6 <= this.health && this.age < 18) ||
+      (this.age * 5 <= this.health && this.age >= 18)
     ) {
       this.live = true;
-    } else this.live = false;
-  },
-
-  livingDay: function livingDay(
-    foodPortionsDay,
-    exerciseHoursDay,
-    momentsSociability
-  ) {
-    this.eat(foodPortionsDay);
-    this.exercise(exerciseHoursDay, petIt.ageDays);
-    this.sociability(momentsSociability);
-    this.ageDays++;
-    this.itLives();
-    console.log(
-      this.name +
-        " tiene " +
-        this.ageDays +
-        " días de edad y su salud tiene " +
-        this.health +
-        " puntos." +
-        (this.hunger ? " Pero cuidado! tiene hambre!" : " No tiene hambre!") +
-        (this.live
-          ? " Sigue vivo!! "
-          : " Aunque la triste noticia es que ya no está aquí con nosotros (RIP)")
-    );
+      console.log("vive");
+    }
+    if (this.age >= 3) {
+      this.live = false;
+      console.log("no vive");
+    }
   },
 };
-
-//▶▷▶▷▶▷▶▷▶∾∾∾∾∾∾∾∾∾⊱ ᓚᘏᗢ  Fin  ⊰∾∾∾∾∾∾∾∾∾∾◀◁◀◁◀◁◀◁◀
-
-// console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Prueba método eat ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-// petIt.eat(1);
-// petIt.eat(3);
-// petIt.eat(7);
-// petIt.eat(10);
-// petIt.eat(0);
-
-// console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Prueba método exercise ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-// petIt.exercise(1, 1);
-// petIt.exercise(2, 1);
-// petIt.exercise(1, 19);
-// petIt.exercise(10, 19);
-
-// console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Prueba método sociability ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-// petIt.sociability(0);
-// petIt.sociability(2);
-// petIt.sociability(11);
-
-// console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Prueba método itLives ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-// petIt.itLives();
-// console.log(petIt.live);
-
-//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Día 1 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-// parámetros a pasar: foodPortionsDay, exerciseHoursDay, recreationMomentsDay
-//petIt.livingDay(3, 2, 1);
-//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 2 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-//petIt.livingDay(3, 3, 3);
-//console.log(" ⋙⋙⋙⋙⋙⋙⋙⋙ ᓚᘏᗢ Dia 3 ⋘⋘⋘⋘⋘⋘⋘⋘ ");
-//petIt.livingDay(1, 3, 3);
 
 //▶▷▶▷▶▷▶▷▶∾∾∾∾∾∾∾∾∾⊱ ᓚᘏᗢ  Uniendo al front ♥  ⊰∾∾∾∾∾∾∾∾∾∾◀◁◀◁◀◁◀◁◀
 
 // ==================== captamos los botones ======================= //
 
+let botonJugar = this.document.querySelector(".botonJugar");
 let botonAlimentar = this.document.querySelector(".botonAlimentar");
 let botonEjercitar = this.document.querySelector(".botonEjercitar");
 let botonPasear = this.document.querySelector(".botonPasear");
@@ -137,41 +60,74 @@ let botonPasear = this.document.querySelector(".botonPasear");
 // ========== transformamos los clicks en parámetros ================ //
 
 // >>>>>>>>>>>> Alimentar >>>>>>>>>>>>> //
-let foodPortionsDay = 0;
-let alimentarDia = function alimentarDia(evento) {
-  foodPortionsDay++;
-  console.log(foodPortionsDay);
-};
 
-botonAlimentar.addEventListener("click", alimentarDia);
+botonAlimentar.addEventListener("click", function darPorcion(event) {
+  petIt.eat(1);
+  alert("Ya van " + petIt.foodPortionDay + " porciones de comida hoy \n >\"<")
+  console.log("funciona");
+});
 
 // >>>>>>>>>>>> Ejercitar >>>>>>>>>>>>> //
-let exerciseHoursDay = 0;
-let ejercitarDia = function ejercitarDia(evento) {
-  exerciseHoursDay++;
-  console.log(exerciseHoursDay);
-};
 
-botonEjercitar.addEventListener("click", ejercitarDia);
+botonEjercitar.addEventListener("click", function ejercitarHora(event) {
+  petIt.exercise(1);
+  alert("Ya van " + petIt.exerciseHourDay + " horas de ejercicio hoy \n o(^▽^)o")
+  console.log("funciona");
+});
 
 // >>>>>>>>>>>> Pasear >>>>>>>>>>>>> //
-let momentsSociabilityDay = 0;
-let pasearDia = function pasearDia(evento) {
-  momentsSociabilityDay++;
-  console.log(momentsSociabilityDay);
-};
 
-botonPasear.addEventListener("click", pasearDia);
+botonPasear.addEventListener("click", function pasear(event) {
+  petIt.sociability(1);
+  alert("Ya van " + petIt.sociabilityMomentDay + " paseos hoy \n ☆⌒(*＾-゜)v")
+  console.log("funciona");
+});
 
 // ========== It´s alive! ================== //
+let time = 3000;
+let viviendo;
+let intervaloJuego;
 
-window.addEventListener("load", function () {
-  this.setInterval(function () {
-    petIt.livingDay(foodPortionsDay, exerciseHoursDay, momentsSociabilityDay);
-    foodPortionsDay = 0;
-    exerciseHoursDay =0;
-    momentsSociabilityDay = 0;
-    console.log(petIt);
-    alert("pasaron 8000 ms");
-  }, 5000);
-});
+function darVida() {
+  viviendo = setTimeout(function () {
+    petIt.age++;
+    let estadoMiMascotita = document.querySelector(".estado");
+    let templateInsertarDatos = `
+      <p class="subtitulo"> Estado de ${petIt.name} dia ${petIt.age}</p>
+      <p>Holis!! Te cuento... </p>
+      <p>Hoy comi ${petIt.foodPortionDay} porciones de comida </p>
+      <p>Hice ${petIt.exerciseHourDay} horas de ejercicio! </p>
+      <p>Sali a pasear ${petIt.sociabilityMomentDay} veces</p>
+    `;
+    estadoMiMascotita.innerHTML = templateInsertarDatos;
+    petIt.itLives();
+    petIt.foodPortionDay = 0;
+    petIt.exerciseHourDay = 0;
+    petIt.sociabilityMomentDay = 0;
+  }, time);
+}
+function detenerVida() {
+  clearTimeout(viviendo);
+  clearInterval(intervaloJuego);
+  let jugarOtraVez = confirm(petIt.name + " ya no está con nosotros... \n ＞﹏＜ \n Querés volver a jugar?");
+  return jugarOtraVez;
+}
+
+function jugar() {
+  let estadoMiMascotita = document.querySelector(".estado");
+  estadoMiMascotita.innerHTML = `<p class="subtitulo">Vamos a jugar</p>`
+  petIt.name = prompt("Ingresá el nombre de tu mascotita:");
+  petIt.live = true;
+  petIt.age = 0;
+  petIt.health = 0;
+  intervaloJuego = setInterval(function () {
+    if (petIt.live == true) {
+      darVida();
+    } if(petIt.live == false){
+      detenerVida()? jugar(): alert("El juego terminó");
+    } 
+  }, time);
+}
+
+botonJugar.addEventListener("click", jugar);
+
