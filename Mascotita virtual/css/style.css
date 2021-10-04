@@ -48,6 +48,12 @@ main{
 /* >>>>>>>>>>>>> ᓚᘏᗢ Mascotita <<<<<<<<<<<<<<<< */
 
 /* acá van las reacciones y la animación de la mascotita */
+.mascotitaAnimada{
+  position:relative;
+  top: 100px;
+  width: 30%;
+  height:fit-content;
+}
 
 /* >>>>>>>>>>>>> ᓚᘏᗢ Juego de interacción <<<<<<<<<<<<<<<< */
 
