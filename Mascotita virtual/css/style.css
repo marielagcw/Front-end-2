@@ -14,7 +14,8 @@
 
 /* >>>>>>>>>>>>> ᓚᘏᗢ Header <<<<<<<<<<<<<<<< */
 
-header, .titulo {
+header,
+.titulo {
   font-family: var(--fuente_titulo);
   font-size: 3rem;
   color: var(--color_fuente);
@@ -25,11 +26,11 @@ header, .titulo {
 
 /* >>>>>>>>>>>>> ᓚᘏᗢ Main <<<<<<<<<<<<<<<< */
 
-main{
+main {
   display: flex;
   justify-content: center;
 }
-.contenedor{
+.contenedor {
   padding: 1rem;
   display: flex;
   justify-content: stretch;
@@ -44,15 +45,15 @@ main{
   justify-content: center;
 }
 
-
 /* >>>>>>>>>>>>> ᓚᘏᗢ Mascotita <<<<<<<<<<<<<<<< */
 
 /* acá van las reacciones y la animación de la mascotita */
-.mascotitaAnimada{
-  position:relative;
-  top: 100px;
-  width: 80%;
-  height:fit-content;
+.mascotitaAnimada {
+  position: relative;
+  top: auto;
+  margin-top: 2rem;
+  width: 100%;
+  height: fit-content;
 }
 
 /* >>>>>>>>>>>>> ᓚᘏᗢ Juego de interacción <<<<<<<<<<<<<<<< */
@@ -89,16 +90,16 @@ section.jugar {
   box-shadow: 0px 0px 10px 0.25px var(--color_fuente_contraste);
 }
 
-.boton:active{
-    transform: scale(1.15);
-    box-shadow: 0px 0px 10px 1px var(--color_fuente_contraste);
+.boton:active {
+  transform: scale(1.15);
+  box-shadow: 0px 0px 10px 1px var(--color_fuente_contraste);
 }
-.botonJugar{
+.botonJugar {
   border-radius: 5px;
   height: 5rem;
 }
 
-.botones div:nth-child(2){
+.botones div:nth-child(2) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,7 +108,9 @@ section.jugar {
 
 /* >>>>>>>>>>>>> ᓚᘏᗢ Resultados del juego: historiales <<<<<<<<<<<<<<<< */
 
-section.estado, section.mascotita, section.botones {
+section.estado,
+section.mascotita,
+section.botones {
   font-family: var(--fuente_texto);
   font-size: 1rem;
   font-weight: bold;
@@ -120,3 +123,10 @@ section.estado, section.mascotita, section.botones {
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 720px) {
+  .contenedor {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
