@@ -1,0 +1,35 @@
+
+
+/* ================= ᓚᘏᗢ Declaración de variables ============================ */
+root{
+    --color-theme_imagenForm-1-rgba: rgba(242, 82, 96, 1); 
+    --color-theme_imagenForm-2-rgba:  rgba(140, 48, 55, 1); 
+    --color-theme_imagenForm-3-rgba:  rgba(242, 82, 82, 1); 
+    --color-theme_imagenForm-4-rgba:  rgba(242, 242, 242, 1); 
+    --color-theme_imagenForm-5-rgba:  rgba(13, 13, 13, 1); 
+}
+
+main{
+    display:flex;
+}
+
+.formulario{
+    color: var(--color-theme_imagenForm-3-rgba);
+    font-size: 2rem;
+    width:50%;
+    text-align: center;
+}
+
+img{
+    width:50%;
+    
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin: 1rem;
+    height: 2rem;
+}

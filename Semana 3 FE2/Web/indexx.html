@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body class="">
+    <header>
+        <h3 class="encabezado">Tu canal de noticias las 24hs</h3>
+        <div class="header__menu">
+            <div class="header__menu--profile">
+                <img src="./icons/icons8-usuario-masculino-en-círculo-50.png" alt="user">
+                <p>Perfil</p>
+            </div>
+            <ul>
+                <li><a href="/">Cuenta</a> </li>
+                <li><a href="/">Cerrar Sesión</a> </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="main">
+            <h2 class="main__title">DH news</h2>
+            <div class="busqueda">
+                <a class="clima" href="https://www.smn.gob.ar/">Clima &#9728;</a>
+                <input class="input" type="text" placeholder="Buscar...">
+            </div>
+        </section>
+
+        <div class="theme">
+            <button onclick="cambiarTema()">Cambiar tema <i class="fas fa-moon"></i></button>
+          </div>
+
+        <section class="carousel">
+            <h2 class="categories__title">
+                Noticias nacionales
+            </h2>
+            <div class="carousel__containerNacional" id="carousel__container">
+            </div>
+        </section>
+        
+        <section class="carousel">
+            <h2 class="categories__title">
+                Noticias internacionales
+            </h2>
+            <div class="carousel__containerInternacional" id="carousel__container">
+            </div>
+        </section>
+    </main>
+
+    <script src="noticias.js"></script>
+</body>
+
+</html>

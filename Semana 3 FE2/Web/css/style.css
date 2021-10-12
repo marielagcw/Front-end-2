@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(rgb(90, 90, 153), #59a4fa);
+  font-family: "Mulish", sans-serif;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+header img {
+  width: 200px;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+header div {
+  margin-right: 30px;
+}
+
+.logo {
+  margin-left: 100px;
+}
+
+.header__menu {
+  margin-top: 10px;
+  margin-right: 70px;
+  
+}
+
+.header__menu--profile {
+  width: 40px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.header__menu--profile img {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+.header__menu--profile p {
+  padding-top: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.header__menu ul {
+  display: none;
+  list-style: none;
+  position: absolute;
+  width: 100px;
+  text-align: right;
+  margin: 0px 0px 0px -10px;
+}
+
+.header__menu:hover ul,
+ul:hover {
+  display: block;
+}
+
+.header__menu li {
+  margin: 10px 0px;
+}
+
+.header__menu li a {
+  color: white;
+  text-decoration: none;
+}
+
+.header__menu li a:hover {
+  text-decoration: underline;
+}
+
+.encabezado {
+  font-size: 20px;
+  margin-left: 20px;
+  color: white;
+}
+
+.main {
+  text-align: center;
+  margin:20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+}
+
+.main__title {
+  color: white;
+  font-size: 50px;
+  padding:10px 50px;;
+  width:101%;
+  margin: 20px 0px;
+  height: 150px;
+  background-image: url("../img/news\ fondo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.busqueda{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.input {
+  border: 2px solid white;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  height: 40px;
+  width: 70%;
+  padding: 5px 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  margin:50px;
+}
+
+.clima{
+  width:300px;
+  color:white;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+::placeholder {
+  color: white;
+}
+
+/* Aca le saco el outline */
+.input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.categories__title {
+  padding:15px;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  width: 100%;
+}
+
+.carousel {
+  padding: 30px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+#carousel__container {
+  margin: 70px 0px;
+}
+
+.carousel--item {
+  background-color: rgba(15, 88, 197, 0.493);
+  width: 200px;
+  height:300px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 400ms all;
+  transform-origin: center left;
+  position: relative;
+}
+
+.carousel--item:hover ~ {
+  transform: translate3d(100px, 0, 0);
+}
+
+.carousel__containerNacional, .carousel__containerInternacional{
+  width:60vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.carousel__containerNacional:hover .carousel--item,
+.carousel__containerInternacional:hover .carousel--item {
+  opacity: 0.3;
+}
+
+.carousel__containerNacional:hover .carousel--item:hover,
+.carousel__containerInternacional:hover .carousel--item:hover {
+  transform: scale(1.5);
+  opacity: 1;
+  z-index: 10;
+}
+
+
+.carousel--item__img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.carousel--itemdetails {
+    background: linear-gradient(top rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.9) 100%);
+    font-size: 10px;
+    opacity: 1;
+    padding: 10px;
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    color: white;
+    width: 100%;
+    word-break: break-all;
+}
+
+.carousel--item__details:hover {
+  opacity: 1;
+}
+
+
+.carousel--item__details--title {
+  height:100px;
+  padding:10px;
+  word-break: break-word;
+  text-align: center;
+}
+
+
+.carousel--item__details--subtitle{
+    display: none;    
+}
+
+
+/* Tema oscuro */
+
+.dark {
+  background: linear-gradient(rgb(3, 3, 8), #525c5c);
+}
+
+.dark h1 {
+  background-color: rgb(19, 19, 19);
+  color: rgb(170, 170, 170);
+  border-color: black;
+}
+
+.dark .item {
+  background-color: rgb(19, 19, 19);
+  border-color: black;
+}
+
+.dark p {
+  color: rgb(230, 230, 230);
+}
+
+.dark h2 {
+  color: rgb(230, 230, 230);
+}
+
+.theme {
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme button {
+  border-radius: 50vh;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  padding: 3px 10px;
+  cursor: pointer;
+}
