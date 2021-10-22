@@ -1,0 +1,15 @@
+.contenedor{
+    display: flex;
+    justify-content: space-around;
+}
+
+.tarjeta{
+    border: 2px solid grey;
+    border-radius: 20px;
+    overflow: hidden;
+    max-width: 30%;
+}
+
+.imagen{
+   height: 150px;
+}
