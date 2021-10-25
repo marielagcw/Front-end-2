@@ -19,7 +19,7 @@
           <a href="http://Twitter.com" target="_blank"></a>
           <a href="http://Instagram.com" target="_blank"></a>
         </div>
-        <form action="" method="post">
+        <form action="#" method="post">
           <fieldset>
             <legend>or use your email for registration:</legend>
             <input type="text" name="Name" id="Name" placeholder="Name" />
@@ -30,9 +30,14 @@
               id="Password"
               placeholder="Password"
             />
-            <input type="checkbox" name="Terms" id="Terms" />I agree to the
-            <a>Terms</a> and <a>Privacy Policy</a>
-            <div>
+            <div class="terms">
+              <input type="checkbox" name="Terms" id="Terms" class="terms" />
+              <p class="terms">
+                I agree to the
+                <a class="terms">Terms</a> and <a class="terms">Privacy Policy</a>
+              </p>
+            </div>
+            <div class="botones">
               <button type="submit">Sign Up</button>
               <button type="submit">Sign In</button>
             </div>
@@ -42,5 +47,6 @@
 
       <img src="img/imagenForm.png" />
     </main>
+    <script src="./js/app.js"></script>
   </body>
 </html>

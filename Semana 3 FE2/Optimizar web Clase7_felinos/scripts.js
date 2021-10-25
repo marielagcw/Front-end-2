@@ -24,6 +24,21 @@ function cambiarTema() {
       </p>
     </div> */
 
+    let contenedorItems = document.querySelector(".contenedor");
+
     function renderizarItems() {
       //resolver el renderizado de cada tarjeta del array
+      for(let i = 0; i<= listadoFelinos.length; i++){
+       contenedorItems.innerHTML += `
+      <div class="item">
+      <img src="${listadoFelinos[i].imgUrl}">
+      <h2>${listadoFelinos[i].title}</h2>
+      <p>
+        ${listadoFelinos[i].description}
+      </p>
+    </div>
+      ` 
+      }     
     }
+
+    renderizarItems();
