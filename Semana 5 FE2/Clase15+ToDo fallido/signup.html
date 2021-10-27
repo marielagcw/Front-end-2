@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+
+    <!-- ---------------- estilos compartidos de login y signup ---------------- -->
+    <link rel="stylesheet" href="styles/ingreso.css" />
+  </head>
+
+  <body>
+    <div class="left">
+      <img src="./assets/persona-signup.png" alt="" />
+    </div>
+    <div class="right">
+      <form>
+        <div class="form-header">
+          <p>To-Do App</p>
+        </div>
+
+        <label>
+          Nombre:
+          <input type="text" id="name" />
+        </label>
+        <label>
+          Apellido:
+          <input type="text" id="lastname" />
+        </label>
+        <label>
+          Email:
+          <input type="text" id="email" />
+        </label>
+        <label>
+          Contraseña:
+          <input type="password" id="password" />
+        </label>
+        <label>
+          Repetir contraseña:
+          <input type="password" id="passwordRepeat" />
+        </label>
+        <p id="error" class="oculto">
+          <small
+            >Los datos ingresados son incorrectos o estan incompletos</small
+          >
+        </p>
+        <button>Crear Cuenta</button>
+      </form>
+      <div class="ingresarA">
+        <a href="index.html">¿Ya tiene una cuenta? Ingrese aquí</a>
+      </div>
+    </div>
+  </body>
+
+  <!-- ---------------------- logica aplicada en register -------------------- -->
+  <!-- <script src="/scripts/utils.js" defer></script> -->
+  <script src="./scripts/signup.js" defer></script>
+</html>

@@ -1,0 +1,93 @@
+/* ================= ᓚᘏᗢ Declaración de variables ============================ */
+
+*{
+  margin:0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(248, 245, 245);
+}
+main {
+  background-color: white;
+  padding: 2rem;
+  margin: 5%;
+  width:70%;
+  display: flex;
+}
+p {
+  text-align: center;
+  font-size: 2rem;
+  color: rgba(242, 82, 96, 1);
+}
+p:nth-child(2) {
+  color: black;
+}
+.formulario {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  width: 50%;
+}
+img {
+  width: 50%;
+}
+fieldset {
+  padding: 1rem, 3rem;
+  margin-right: 2rem;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-style: none;
+}
+input {
+  border-radius: 10px;
+  border-color: rgb(192, 192, 192);
+  border-style: solid;
+  background-color: rgb(247, 247, 247);
+  padding: 0.5rem;
+  margin: 1rem;
+  height: 2rem;
+}
+.terms {
+  font-size: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+a.terms {
+  color: rgba(242, 82, 96, 1);
+}
+.botones {
+  padding:1rem;
+  display: flex;
+  flex-direction: row;
+}
+button:first-of-type {
+  background-color: rgba(242, 82, 96, 1);
+  color: white;
+}
+button {
+  color: rgba(242, 82, 96, 1);
+  font-size: 1rem;
+  background-color: white;
+  margin: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: rgba(242, 82, 96, 1);
+}
+
+/* mensajes de error */
+.oculto{
+  display: none;
+}
+.error{
+  color: rgba(255, 0, 0, 0.774);
+  font-size:1rem;
+}

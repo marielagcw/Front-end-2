@@ -67,7 +67,8 @@ main {
 section {
   min-height: 95vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/app.js" defer></script>
+    <title>Formularios</title>
+  </head>
+
+  <body>
+    <main>
+      <section class="formulario">
+        <div>
+          <p>Create Account</p>
+          <a href="http://google.com" target="_blank"></a>
+          <a href="http://facebook.com" target="_blank"></a>
+          <a href="http://Twitter.com" target="_blank"></a>
+          <a href="http://Instagram.com" target="_blank"></a>
+        </div>
+        <form id="formulario" action="#" method="post">
+          <fieldset>
+            <legend>or use your email for registration:</legend>
+            <input type="text" name="name" id="name" placeholder="Name" />
+            <p class="oculto error">Su nombre no es válido, por favor ingrese nuevamente su nombre. Debe contener solamente letras y el campo debe estar completo</p>
+            <input type="email" name="email" id="email" placeholder="Email" />
+            <p class="oculto error">Su email no es válido, por favor ingrese nuevamente su email. Verifique que cumpla con el formato ejemplo@email.com</p>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+            <p class="oculto error">Su contraseña no es válida, por favor verifique que su contraseña sea correcta</p>
+            <div class="terms">
+              <input type="checkbox" name="terms" id="terms" class="terms" />
+              <p class="terms">
+                I agree to the
+                <a class="terms">Terms</a> and <a class="terms">Privacy Policy</a>
+              </p>
+              <p class="oculto error">Para poder continuar debe haber aceptado los términos y condiciones tildando la casilla</p>
+            </div>
+            <div class="botones">
+              <button type="submit">Sign Up</button>
+              <button type="submit">Sign In</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <img src="img/imagenForm.png" />
+    </main>
+  </body>
+</html>
