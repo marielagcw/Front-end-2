@@ -64,16 +64,16 @@ function normalizarDatos() {
 
 
 function fetchApiRegister(payload) {
-  let bod = payload
+  let bod = payload;
   const settings = {
     method: "POST",
-    // headers: {
-    //   "Content-Type": "aplication/json",
-    // },
+    headers: {
+      "Content-Type": "aplication/json",
+    },
     body: bod,
   };
   fetch("https://ctd-todo-api.herokuapp.com/v1/users/", settings)
-    .then((respuesta) => respuesta.text())
+    .then((respuesta) => respuesta.json())
     .then(
       (data) => {
         if (data) {

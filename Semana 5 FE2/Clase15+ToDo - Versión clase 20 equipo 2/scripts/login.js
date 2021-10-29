@@ -4,13 +4,12 @@ window.addEventListener("load", function () {
   /* -------------------------------------------------------------------------- */
 
   /* ---------------------- capturamos los elementos HTML --------------------- */
-  const email = document.querySelector("#inputEmail");
-  const password = document.querySelector("#inputPassword");
+  const email = this.document.querySelector("#inputEmail");
+  const password = this.document.querySelector("#inputPassword");
   const form = document.forms[0];
-  const errorMessage = document.querySelector(".errorMessage");
-
-  /* ----------------------- Variables de uso frecuente ----------------------- */
   const apiUrlLogin = "https://ctd-todo-api.herokuapp.com/v1/users/login";
+  const errorMessage = this.document.querySelector(".errorMessage");
+
 
   /* --------------------------------- submit --------------------------------- */
 
@@ -28,7 +27,7 @@ window.addEventListener("load", function () {
       //agrego un texto para indicarle al usuario que hay un error de ingreso
       errorMessage.innerText =
         "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
-      errorMessage.classList.remove("ocultar");
+        errorMessage.classList.remove("ocultar");
       setTimeout(() => {
         errorMessage.classList.add("ocultar");
       }, 3000);
@@ -60,14 +59,13 @@ window.addEventListener("load", function () {
   /* ------------------------ Conexión con el servidor ------------------------ */
 
   function loginPost(data) {
-    const settings = {
+    fetch(apiUrlLogin, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    };
-    fetch(apiUrlLogin, settings)
+    })
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
@@ -77,7 +75,7 @@ window.addEventListener("load", function () {
           //agrego un texto para indicarle al usuario que hay un error de ingreso
           errorMessage.innerText =
             "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
-          errorMessage.classList.remove("ocultar");
+            errorMessage.classList.remove("ocultar");
           setTimeout(() => {
             errorMessage.classList.add("ocultar");
           }, 3000);

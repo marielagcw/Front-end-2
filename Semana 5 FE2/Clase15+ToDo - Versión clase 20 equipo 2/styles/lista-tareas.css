@@ -141,7 +141,6 @@ a {
   background-color: var(--secondary);
 }
 
-
 .tarea:first-child .not-done::before {
   content: '';
   position: absolute;
@@ -184,6 +183,7 @@ a {
 }
 
 /* Tareas terminadas ----------------------------------------------------------- */
+
 .titulo-terminadas {
   position: relative;
   width: 8em;
@@ -242,13 +242,4 @@ a {
 @keyframes trasparencia {
   0%{ opacity: 0.5;}
   100%{ opacity: 0.8;}
-}
-
-.errorMessage{
-  color:red;
-  font-size: 1rem;
-}
-
-.ocultar{
-  display:none;
 }

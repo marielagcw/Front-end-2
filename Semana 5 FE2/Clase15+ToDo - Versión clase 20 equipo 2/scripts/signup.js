@@ -11,10 +11,8 @@ window.addEventListener("load", function () {
   const password = document.querySelector("#password");
   const password2 = document.querySelector("#password2");
   const form = document.forms[0];
-  const errorMessage = document.querySelector(".errorMessage");
-
-  /* ----------------------- Variables de uso frecuente ----------------------- */
   const apiUrlRegister = "https://ctd-todo-api.herokuapp.com/v1/users";
+  const errorMessage = this.document.querySelector(".errorMessage");
 
   /* --------------------------------- submit --------------------------------- */
 
@@ -35,7 +33,7 @@ window.addEventListener("load", function () {
       //agrego un texto para indicarle al usuario que hay un error de ingreso
       errorMessage.innerText =
         "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
-      errorMessage.classList.remove("ocultar");
+        errorMessage.classList.remove("ocultar");
       setTimeout(() => {
         errorMessage.classList.add("ocultar");
       }, 3000);
@@ -71,14 +69,13 @@ window.addEventListener("load", function () {
   /* ------------------------ Conexión con el servidor ------------------------ */
 
   function signupPost(data) {
-    const settings = {
+    fetch(apiUrlRegister, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
-    };
-    fetch(apiUrlRegister, settings).then((response) => {
+    }).then((response) => {
       console.log(response);
       if (response.status == 200 || response.status == 201) {
         console.log("Creado");

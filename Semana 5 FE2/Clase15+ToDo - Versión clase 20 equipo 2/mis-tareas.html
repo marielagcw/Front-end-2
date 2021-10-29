@@ -19,6 +19,9 @@
 <!-- CDN example (unpkg) -->
 <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js" defer></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+
+<!-- logica de la página -->
+<script src="./scripts/tasks.js" defer></script>
  
   <title>ToDo</title>
 </head>
@@ -39,10 +42,9 @@
 
 
   <form class="nueva-tarea">
-    <div id="contenedorNuevaTarea" class="not-done "></div>
+    <div class="not-done "></div>
     <input id="nuevaTarea" type="text" placeholder="Nueva tarea">
-    <p class="errorMessage"></p>
-    <button id="btnNuevaTarea" type="submit">
+    <button type="submit">
       <img src="./assets/plus.png" alt="Agregar Tarea">
     </button>
   </form>
@@ -81,6 +83,5 @@
   </ul>
 
 </body>
-<!-- logica de la página -->
-<script src="./scripts/tasks.js"></script>
+
 </html>
