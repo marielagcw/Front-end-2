@@ -21,7 +21,7 @@ window.addEventListener("load", function () {
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    // preparamos el objeto que recibe los datos desde el form
+    // ▻▻▻▻▻ Preparamos el objeto que recibe los datos desde el form ---- ᓚᘏᗢ
     let dataRegister = {
       firstName: name.value,
       lastName: lastname.value,
@@ -30,9 +30,8 @@ window.addEventListener("load", function () {
       password2: password2.value,
     };
 
-    //función que maneja la validación de los datos
+    // ▻▻▻▻▻ Validación de los datos y respuesta al usuario  si hay error ---- ᓚᘏᗢ
     if (validateSignupData(dataRegister) === false) {
-      //agrego un texto para indicarle al usuario que hay un error de ingreso
       errorMessage.innerText =
         "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
       errorMessage.classList.remove("ocultar");
@@ -43,14 +42,14 @@ window.addEventListener("load", function () {
       return;
     }
 
-    //función que normaliza datos
+    // ▻▻▻▻▻ Normalización de los datos para enviar a la api ---- ᓚᘏᗢ
     dataRegister = normalizeSignupData(dataRegister);
 
-    //función de envío al servidor
+    // ▻▻▻▻▻ Envío de datos a la api ---- ᓚᘏᗢ
     signupPost(dataRegister);
   });
 
-  /* ----------------------- Validaciones y normalización ---------------------- */
+  /* ----------------------- Validaciones y normalización - funciones ---------------------- */
 
   function validateSignupData(data) {
     for (property in data) {
@@ -79,9 +78,7 @@ window.addEventListener("load", function () {
       body: JSON.stringify(data),
     };
     fetch(apiUrlRegister, settings).then((response) => {
-      console.log(response);
       if (response.status == 200 || response.status == 201) {
-        console.log("Creado");
         location.href = "./index.html";
       }
     });

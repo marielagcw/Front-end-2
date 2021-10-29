@@ -13,19 +13,17 @@ window.addEventListener("load", function () {
   const apiUrlLogin = "https://ctd-todo-api.herokuapp.com/v1/users/login";
 
   /* --------------------------------- submit --------------------------------- */
-
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    //creamos el objeto que guarda todos mis datos obtenidos del form
+    // ▻▻▻▻▻ Creamos el objeto que guarda todos mis datos obtenidos del form ---- ᓚᘏᗢ
     let dataLogin = {
       email: email.value,
       password: password.value,
     };
 
-    // aplicamos validación
+    // ▻▻▻▻▻ Validación de los datos y respuesta al usuario  si hay error ---- ᓚᘏᗢ
     if (validateLogingData(dataLogin) === false) {
-      //agrego un texto para indicarle al usuario que hay un error de ingreso
       errorMessage.innerText =
         "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
       errorMessage.classList.remove("ocultar");
@@ -36,14 +34,14 @@ window.addEventListener("load", function () {
       return;
     }
 
-    //aplicamos normalización
+    // ▻▻▻▻▻ Normalización de los datos para enviar a la api ---- ᓚᘏᗢ
     dataLogin = normalizeLoginData(dataLogin);
 
-    //enviamos la información al servidor
+    // ▻▻▻▻▻ Envío de datos a la api ---- ᓚᘏᗢ
     loginPost(dataLogin);
   });
 
-  /* ----------------------- Validaciones y normalización ---------------------- */
+  /* ----------------------- Validaciones y normalización - funciones ---------------------- */
   function validateLogingData(data) {
     for (property in data) {
       if (data[property] === "") return false;
@@ -74,7 +72,7 @@ window.addEventListener("load", function () {
           localStorage.setItem("token", data.jwt);
           location.href = "./mis-tareas.html";
         } else {
-          //agrego un texto para indicarle al usuario que hay un error de ingreso
+          // ▻▻▻▻▻ Agrego un texto para indicarle al usuario que hay un error de ingreso ---- ᓚᘏᗢ
           errorMessage.innerText =
             "Los datos ingresados son erróneos o están incompletos, por favor ingrese los datos nuevamente";
           errorMessage.classList.remove("ocultar");
@@ -84,7 +82,6 @@ window.addEventListener("load", function () {
           form.reset();
           return;
         }
-        console.log(data);
       });
   }
 });
