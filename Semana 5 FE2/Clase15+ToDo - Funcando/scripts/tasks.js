@@ -6,8 +6,8 @@ const mostrarUsuario = document.querySelector("#mostrarUsuario");
 const btnNuevaTarea = document.querySelector("#btnNuevaTarea");
 const tareasPendientes = document.querySelector("ul.tareas-pendientes");
 const tareasTerminadas = document.querySelector("ul.tareas-terminadas");
-const skeleton = document.querySelector("#skeleton");
 const errorMessage = document.querySelector(".errorMessage");
+const skeleton = document.querySelector("#skeleton");
 const btnCerrarSesion = document.querySelector("#closeApp");
 
 /* -------------------------------------------------------------------------- */
@@ -131,12 +131,12 @@ function renderizarPorTipoTarea(lista) {
   arrayTareasPendientes.splice(0, arrayTareasPendientes.length);
   arrayTareasTerminadas.splice(0, arrayTareasTerminadas.length);
 
-  localStorage.setItem("listaTareas", lista);
   lista.forEach((element) => {
     if (element.completed == true) {
       arrayTareasTerminadas.push(element);
     } else arrayTareasPendientes.push(element);
   });
+  // Ordenamos los arrays
   arrayTareasPendientes.reverse();
   arrayTareasTerminadas.reverse();
 
@@ -148,7 +148,8 @@ function renderizarPorTipoTarea(lista) {
 <div>
 <li class="tarea">
 <div class="not-done" change id="${tarea.id}" 
-title="${tarea.description}"></div>
+title="${tarea.description}" 
+></div>
 <div class="descripcion">
 <p class="nombre">${tarea.description}</p>
 <p class="timestamp"><i class="far
@@ -171,7 +172,7 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
       <i 
         class="fas fa-undo-alt change"></i>
     </button>
-    <button class="btnEliminar" id="${tarea.id}">
+    <button class="btnEliminar" id="${tarea.id}" title="${tarea.description}">
       <i  class="far fa-trash-alt"></i>
     </button>
   </div>
@@ -180,26 +181,27 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
   `;
     });
   });
-  obtenerIdTareaSeleccionada();
+  obtenerIdTareaPendiente();
+  obtenerIdTareaTerminada();
   if (arrayTareasPendientes.lentgh !== 0) {
     skeleton.remove();
   }
+  
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*              Seleccionar y accionar sobre una tarea específica             */
 /* -------------------------------------------------------------------------- */
 
-function obtenerIdTareaSeleccionada() {
+function obtenerIdTareaPendiente() {
   const escucharTareasPendientes = document.querySelectorAll("div.not-done");
 
-  // >>>>>>>>>>>>>>>>>> Buscar tarea en la que se hizo click >>>>>>>>>>>>>>>>>>>>>>>>>> //
-  escucharTareasPendientes.forEach((tarea) => {
-    tarea.addEventListener("click", function (e) {
-      let tareaSeleccionada = e.target;
-      if (tareaSeleccionada.id) {
-        let descripcionTareaSeleccionada = tareaSeleccionada.title;
+  // >>>>>>>>>>>>>>>>>> Buscar tarea pendiente en la que se hizo click >>>>>>>>>>>>>>>>>>>>>>>>>> //
+  escucharTareasPendientes.forEach((tareaPendiente) => {
+    tareaPendiente.addEventListener("click", function (e) {
+      let tareaPendienteSeleccionada = e.target;
+      if (tareaPendienteSeleccionada.id) {
+        let descripcionTareaSeleccionada = tareaPendienteSeleccionada.title;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>> Marcar tarea terminada >>>>>>>>>>>>>>>>>>>> //
         Swal.fire({
@@ -211,7 +213,7 @@ function obtenerIdTareaSeleccionada() {
           cancelButtonText: "Cancelar",
         }).then((result) => {
           if (result.isConfirmed) {
-            fetch(apiUrlTasks + "/" + `${tareaSeleccionada.id}`, {
+            fetch(apiUrlTasks + "/" + `${tareaPendienteSeleccionada.id}`, {
               method: "PUT",
               headers: {
                 Authorization: jwt,
@@ -239,7 +241,6 @@ function obtenerIdTareaSeleccionada() {
               cancelButtonText: "Cancelar",
             }).then((result) => {
               /* ----------------------------- Acción Modificar Tarea ---------------------------- */
-              /* ------------------- Modificación de la tarea también en el servidor ------------ */
               if (result.isConfirmed) {
                 const inputValue = `${descripcionTareaSeleccionada}`;
                 Swal.fire({
@@ -256,7 +257,8 @@ function obtenerIdTareaSeleccionada() {
                 }).then((response) => {
                   const tareaModificada = response.value;
                   if (tareaModificada) {
-                    const urlId = apiUrlTasks + "/" + `${tareaSeleccionada.id}`;
+                    const urlId =
+                      apiUrlTasks + "/" + `${tareaPendienteSeleccionada.id}`;
                     fetch(urlId, {
                       method: "PUT",
                       headers: {
@@ -280,8 +282,10 @@ function obtenerIdTareaSeleccionada() {
                 /* ----------------------------- Acción Eliminar tarea ----------------------------- */
               } else if (result.isDenied) {
                 Swal.fire({
-                  title: "Realmente quieres eliminar esta tarea? Aún está pendiente",
+                  title:
+                    "Realmente quieres eliminar esta tarea? Aún está pendiente",
                   icon: "warning",
+                  showDenyButton: true,
                   showCancelButton: true,
                   confirmButtonColor: "#3085d6",
                   cancelButtonColor: "#d33",
@@ -290,7 +294,7 @@ function obtenerIdTareaSeleccionada() {
                 }).then((result) => {
                   if (result.isConfirmed) {
                     eliminarTareaServidor(
-                      apiUrlTasks + "/" + `${tareaSeleccionada.id}`,
+                      apiUrlTasks + "/" + `${tareaPendienteSeleccionada.id}`,
                       jwt
                     );
                     Swal.fire({
@@ -306,12 +310,73 @@ function obtenerIdTareaSeleccionada() {
       }
     });
   });
-  const escucharTareasPendientes = document.querySelectorAll("div.done");
-  
 }
 
+/* ------- Seleccionar y accionar sobre una tarea terminada (botones) ------- */
+function obtenerIdTareaTerminada() {
+  const escucharBotonDeshacer = document.querySelectorAll(".btnDeshacer");
+  escucharBotonDeshacer.forEach((boton) => {
+    boton.addEventListener("click", function (e) {
+      const botonSeleccionadoId = e.currentTarget.id;
+      Swal.fire({
+        title: "¿Deseas marcar esta tarea como pendiente?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí! Marcar como pendiente",
+        cancelButtonText: "Cancelar",
+      })
+        .then((result) => {
+          /* ----------------------------- Marcar como pendiente ---------------------------- */
+          if (result.isConfirmed) {
+            const urlId = apiUrlTasks + "/" + botonSeleccionadoId;
+            fetch(urlId, {
+              method: "PUT",
+              headers: {
+                Authorization: jwt,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                description: e.title,
+                completed: false,
+              }),
+            }).then(() => {
+              Swal.fire({
+                icon: "success",
+                title: `Tu tarea ya está entre las Tareas Pendientes!`,
+              });
+              obtenerListaTareas(apiUrlTasks, jwt);
+            });
+          }
+        })
+    });
+  });
 
-
+  const escucharBotonEliminar = document.querySelectorAll(".btnEliminar");
+  escucharBotonEliminar.forEach((boton) => {
+    boton.addEventListener("click", function (e) {
+      const botonSeleccionadoId = e.currentTarget.id;
+      Swal.fire({
+        title: "Realmente quieres eliminar esta tarea?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí! Quiero eliminarla!",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          eliminarTareaServidor(apiUrlTasks + "/" + botonSeleccionadoId, jwt);
+          Swal.fire({
+            icon: "success",
+            title: "Tu tarea ha sido eliminada exitosamente.",
+          });
+        }
+      });
+    });
+  });
+}
 
 /* --------------------- Eliminar la tarea del servidor --------------------- */
 function eliminarTareaServidor(url, token) {
