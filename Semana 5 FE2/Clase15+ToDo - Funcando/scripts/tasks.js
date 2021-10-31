@@ -167,12 +167,12 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
 <div class="descripcion">
 <p class="nombre">${tarea.description}</p>
   <div>
-    <button class="btnDeshacer">
-      <i id="${tarea.id}"
+    <button class="btnDeshacer" id="${tarea.id}">
+      <i 
         class="fas fa-undo-alt change"></i>
     </button>
-    <button class="btnEliminar">
-      <i id="${tarea.id}" class="far fa-trash-alt"></i>
+    <button class="btnEliminar" id="${tarea.id}">
+      <i  class="far fa-trash-alt"></i>
     </button>
   </div>
 </div>
@@ -186,21 +186,20 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
   }
 }
 
+
 /* -------------------------------------------------------------------------- */
 /*              Seleccionar y accionar sobre una tarea específica             */
 /* -------------------------------------------------------------------------- */
 
 function obtenerIdTareaSeleccionada() {
-  const escucharTareas = document.querySelectorAll("li.tarea");
+  const escucharTareasPendientes = document.querySelectorAll("div.not-done");
 
   // >>>>>>>>>>>>>>>>>> Buscar tarea en la que se hizo click >>>>>>>>>>>>>>>>>>>>>>>>>> //
-  escucharTareas.forEach((tarea) => {
+  escucharTareasPendientes.forEach((tarea) => {
     tarea.addEventListener("click", function (e) {
       let tareaSeleccionada = e.target;
       if (tareaSeleccionada.id) {
-        // Guardo id y título en el storage para usarlos después
-        localStorage.setItem("idTareaSeleccionada", tareaSeleccionada.id);
-        localStorage.setItem("descripcionTarea", tareaSeleccionada.title);
+        let descripcionTareaSeleccionada = tareaSeleccionada.title;
 
         // >>>>>>>>>>>>>>>>>>>>>>>>> Marcar tarea terminada >>>>>>>>>>>>>>>>>>>> //
         Swal.fire({
@@ -219,7 +218,7 @@ function obtenerIdTareaSeleccionada() {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                description: localStorage.getItem("descripcionTarea"),
+                description: descripcionTareaSeleccionada,
                 completed: true,
               }),
             }).then(() => {
@@ -242,9 +241,7 @@ function obtenerIdTareaSeleccionada() {
               /* ----------------------------- Acción Modificar Tarea ---------------------------- */
               /* ------------------- Modificación de la tarea también en el servidor ------------ */
               if (result.isConfirmed) {
-                const inputValue = `${localStorage.getItem(
-                  "descripcionTarea"
-                )}`;
+                const inputValue = `${descripcionTareaSeleccionada}`;
                 Swal.fire({
                   title: "Modifica tu tarea",
                   input: "text",
@@ -283,7 +280,7 @@ function obtenerIdTareaSeleccionada() {
                 /* ----------------------------- Acción Eliminar tarea ----------------------------- */
               } else if (result.isDenied) {
                 Swal.fire({
-                  title: "Realmente quieres eliminar esta tarea?",
+                  title: "Realmente quieres eliminar esta tarea? Aún está pendiente",
                   icon: "warning",
                   showCancelButton: true,
                   confirmButtonColor: "#3085d6",
@@ -309,7 +306,12 @@ function obtenerIdTareaSeleccionada() {
       }
     });
   });
+  const escucharTareasPendientes = document.querySelectorAll("div.done");
+  
 }
+
+
+
 
 /* --------------------- Eliminar la tarea del servidor --------------------- */
 function eliminarTareaServidor(url, token) {
