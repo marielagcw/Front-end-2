@@ -1,4 +1,6 @@
-/* ------------------------- Captura elementos HTML ------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                           Capturar elementos HTML                          */
+/* -------------------------------------------------------------------------- */
 const formTasks = document.forms[0];
 const mostrarUsuario = document.querySelector("#mostrarUsuario");
 const btnNuevaTarea = document.querySelector("#btnNuevaTarea");
@@ -8,36 +10,39 @@ const skeleton = document.querySelector("#skeleton");
 const errorMessage = document.querySelector(".errorMessage");
 const btnCerrarSesion = document.querySelector("#closeApp");
 
-/* ----------------------- Variables de uso frecuente ----------------------- */
+/* -------------------------------------------------------------------------- */
+/*                            Variables frecuentes                            */
+/* -------------------------------------------------------------------------- */
 const apiUrlGetMe = "https://ctd-todo-api.herokuapp.com/v1/users/getMe";
 const apiUrlTasks = "https://ctd-todo-api.herokuapp.com/v1/tasks";
-const apiUrlDelete = "https://ctd-todo-api.herokuapp.com/v1/tasks/";
 const jwt = localStorage.getItem("token");
 
-/* --------------------------- Carga de la página --------------------------- */
-
+/* -------------------------------------------------------------------------- */
+/*                             Carga de la página                             */
+/* -------------------------------------------------------------------------- */
 window.addEventListener("load", function () {
-  /* ---------------------------- Submit Formulario y login --------------------------- */
   if (!jwt) {
     location.href = "./index.html";
   }
   formTasks.addEventListener("submit", (e) => e.preventDefault());
 
-  /* --------------------------------- Resquests --------------------------------- */
+  /* -------------------------------------------------------------------------- */
+  /*                                  Requests                                  */
+  /* -------------------------------------------------------------------------- */
 
-  // ▻▻▻▻▻ Renderizar Nombre usuario ---- ᓚᘏᗢ
+  /* ---------------------- Renderizar Nombre de usuario ---------------------- */
   renderizarNombreUsuario(apiUrlGetMe, jwt);
 
-  // ▻▻▻▻▻ Crear nueva tarea y respuesta al usuario en caso de error ---- ᓚᘏᗢ
+  /* ------------------------------- Nueva tarea ------------------------------ */
   btnNuevaTarea.addEventListener("click", (e) => {
     e.preventDefault();
     nuevaTareaIngresada();
   });
 
-  // ▻▻▻▻▻ Obtener y ordenar listas de tareas ---- ᓚᘏᗢ
+  /* -------------------- Obtener y ordenar lista de tareas ------------------- */
   obtenerListaTareas(apiUrlTasks, jwt);
 
-  // ▻▻▻▻▻ Cerrar la aplicación ---- ᓚᘏᗢ
+  /* ------------------------------ Cerrar la app ----------------------------- */
   btnCerrarSesion.addEventListener("click", function () {
     localStorage.removeItem("token");
     localStorage.removeItem("listaTareas");
@@ -45,8 +50,11 @@ window.addEventListener("load", function () {
   });
 }); //cierre del window event
 
-/* -------------------------- Funcionalidades -------------------------- */
+/* -------------------------------------------------------------------------- */
+/*                                  Funciones                                 */
+/* -------------------------------------------------------------------------- */
 
+/* ---------------------- Renderizar nombre de usuario ---------------------- */
 function renderizarNombreUsuario(url, token) {
   const settings = {
     method: "GET",
@@ -62,6 +70,7 @@ function renderizarNombreUsuario(url, token) {
     });
 }
 
+/* -------------------------- Ingresar nueva tarea -------------------------- */
 function nuevaTareaIngresada() {
   const nuevaTareaObj = {
     description: document.querySelector("#nuevaTarea").value,
@@ -81,6 +90,7 @@ function nuevaTareaIngresada() {
   formTasks.reset();
 }
 
+/* -------------------- Crear nueva tarea en el servidor -------------------- */
 function crearNuevaTarea(url, token, objNorm) {
   const settings = {
     method: "POST",
@@ -97,6 +107,7 @@ function crearNuevaTarea(url, token, objNorm) {
     });
 }
 
+/* ---------------- Obtener lista de tareas desde el servidor --------------- */
 function obtenerListaTareas(url, token) {
   const settings = {
     method: "GET",
@@ -111,11 +122,12 @@ function obtenerListaTareas(url, token) {
     });
 }
 
+/* ----------- Renderizar por tipo de tarea (pendiente/terminada) ----------- */
 function renderizarPorTipoTarea(lista) {
   arrayTareasPendientes = [];
   arrayTareasTerminadas = [];
 
-  // Vaciamos los arrays para que los cambios no me afecten el renderizado de tareas
+  // Vaciamos los arrays para evitar duplicados en pantalla
   arrayTareasPendientes.splice(0, arrayTareasPendientes.length);
   arrayTareasTerminadas.splice(0, arrayTareasTerminadas.length);
 
@@ -135,7 +147,8 @@ function renderizarPorTipoTarea(lista) {
     tareasPendientes.innerHTML += `
 <div>
 <li class="tarea">
-<div class="not-done" change id="${tarea.id}"></div>
+<div class="not-done" change id="${tarea.id}" 
+title="${tarea.description}"></div>
 <div class="descripcion">
 <p class="nombre">${tarea.description}</p>
 <p class="timestamp"><i class="far
@@ -144,29 +157,28 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
 </li>
 <div>
 `;
-
     // ------------------  >>>  Tareas Terminadas -------------------->>
     tareasTerminadas.innerHTML = "";
-    const newLocal = (tarea) => {
+    arrayTareasTerminadas.forEach((tarea) => {
       tareasTerminadas.innerHTML += `
   <li class="tarea">
-<div class="done"></div>
+  <div class="done" change id="${tarea.id}" 
+  title="${tarea.description}"></div>
 <div class="descripcion">
-  <p class="nombre">${tarea.description}</p>
+<p class="nombre">${tarea.description}</p>
   <div>
-    <button>
+    <button class="btnDeshacer">
       <i id="${tarea.id}"
         class="fas fa-undo-alt change"></i>
     </button>
-    <button>
+    <button class="btnEliminar">
       <i id="${tarea.id}" class="far fa-trash-alt"></i>
     </button>
   </div>
 </div>
 </li>
   `;
-    };
-    arrayTareasTerminadas.forEach(newLocal);
+    });
   });
   obtenerIdTareaSeleccionada();
   if (arrayTareasPendientes.lentgh !== 0) {
@@ -174,27 +186,124 @@ fa-calendar-alt"></i> ${date.toLocaleDateString()}</p>
   }
 }
 
+/* -------------------------------------------------------------------------- */
+/*              Seleccionar y accionar sobre una tarea específica             */
+/* -------------------------------------------------------------------------- */
+
 function obtenerIdTareaSeleccionada() {
   const escucharTareas = document.querySelectorAll("li.tarea");
+
+  // >>>>>>>>>>>>>>>>>> Buscar tarea en la que se hizo click >>>>>>>>>>>>>>>>>>>>>>>>>> //
   escucharTareas.forEach((tarea) => {
     tarea.addEventListener("click", function (e) {
       let tareaSeleccionada = e.target;
       if (tareaSeleccionada.id) {
+        // Guardo id y título en el storage para usarlos después
         localStorage.setItem("idTareaSeleccionada", tareaSeleccionada.id);
+        localStorage.setItem("descripcionTarea", tareaSeleccionada.title);
+
+        // >>>>>>>>>>>>>>>>>>>>>>>>> Marcar tarea terminada >>>>>>>>>>>>>>>>>>>> //
         Swal.fire({
-          title: "¿Qué deseas hacer con esta tarea?",
+          title: "¿Qué deseas hacer con tu tarea?",
           showDenyButton: true,
           showCancelButton: true,
-          confirmButtonText: "Modificar",
-          denyButtonText: `Eliminar`,
+          confirmButtonText: "Finalizar",
+          denyButtonText: `Modificar`,
           cancelButtonText: "Cancelar",
         }).then((result) => {
-          /* Read more about isConfirmed, isDenied below */
           if (result.isConfirmed) {
-            Swal.fire("Tarea modificada correctamente!");
+            fetch(apiUrlTasks + "/" + `${tareaSeleccionada.id}`, {
+              method: "PUT",
+              headers: {
+                Authorization: jwt,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                description: localStorage.getItem("descripcionTarea"),
+                completed: true,
+              }),
+            }).then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Listo!",
+              });
+              obtenerListaTareas(apiUrlTasks, jwt);
+            });
           } else if (result.isDenied) {
-            eliminarTarea(apiUrlDelete + `${tareaSeleccionada.id}`, jwt);
-            Swal.fire("Tarea eliminada correctamente!");
+            // >>>>>>>>>>>>>>>>>>>> Alerta para que el usuario decida qué hacer >>>>>>>>>> //
+            Swal.fire({
+              title: "¿Qué tipo de modificación querés hacer?",
+              showDenyButton: true,
+              showCancelButton: true,
+              confirmButtonText: "Modificar contenido",
+              denyButtonText: `Eliminarla`,
+              cancelButtonText: "Cancelar",
+            }).then((result) => {
+              /* ----------------------------- Acción Modificar Tarea ---------------------------- */
+              /* ------------------- Modificación de la tarea también en el servidor ------------ */
+              if (result.isConfirmed) {
+                const inputValue = `${localStorage.getItem(
+                  "descripcionTarea"
+                )}`;
+                Swal.fire({
+                  title: "Modifica tu tarea",
+                  input: "text",
+                  inputValue: inputValue,
+                  inputAttributes: {
+                    autocapitalize: "off",
+                  },
+                  showCancelButton: true,
+                  confirmButtonText: "Confirmar",
+                  showLoaderOnConfirm: true,
+                  cancelButtonText: "Cancelar",
+                }).then((response) => {
+                  const tareaModificada = response.value;
+                  if (tareaModificada) {
+                    const urlId = apiUrlTasks + "/" + `${tareaSeleccionada.id}`;
+                    fetch(urlId, {
+                      method: "PUT",
+                      headers: {
+                        Authorization: jwt,
+                        "Content-Type": "application/json",
+                      },
+                      body: JSON.stringify({
+                        description: tareaModificada,
+                        completed: false,
+                      }),
+                    }).then(() => {
+                      Swal.fire({
+                        icon: "success",
+                        title: `La tarea fue modificada con éxito!`,
+                      });
+                      obtenerListaTareas(apiUrlTasks, jwt);
+                    });
+                  }
+                });
+
+                /* ----------------------------- Acción Eliminar tarea ----------------------------- */
+              } else if (result.isDenied) {
+                Swal.fire({
+                  title: "Realmente quieres eliminar esta tarea?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#3085d6",
+                  cancelButtonColor: "#d33",
+                  confirmButtonText: "Sí! Quiero eliminarla!",
+                  cancelButtonText: "Cancelar",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    eliminarTareaServidor(
+                      apiUrlTasks + "/" + `${tareaSeleccionada.id}`,
+                      jwt
+                    );
+                    Swal.fire({
+                      icon: "success",
+                      title: "Tu tarea ha sido eliminada exitosamente.",
+                    });
+                  }
+                });
+              }
+            });
           }
         });
       }
@@ -202,7 +311,8 @@ function obtenerIdTareaSeleccionada() {
   });
 }
 
-function eliminarTarea(url, token) {
+/* --------------------- Eliminar la tarea del servidor --------------------- */
+function eliminarTareaServidor(url, token) {
   const settings = {
     method: "DELETE",
     headers: {
@@ -210,6 +320,6 @@ function eliminarTarea(url, token) {
     },
   };
   fetch(url, settings).then(() => {
-   obtenerListaTareas(apiUrlTasks, token);
+    obtenerListaTareas(apiUrlTasks, token);
   });
 }
