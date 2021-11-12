@@ -1,0 +1,26 @@
+{
+  "name": "testing",
+  "version": "1.0.0",
+  "description": "Funciones de proyectos Front2",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marielagcw/Front-end-2.git"
+  },
+  "keywords": [
+    "test",
+    "jest"
+  ],
+  "author": "Mariela",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marielagcw/Front-end-2/issues"
+  },
+  "homepage": "https://github.com/marielagcw/Front-end-2#readme",
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
