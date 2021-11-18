@@ -98,3 +98,11 @@ button {
 .ocultar{
   display:none;
 }
+div.spinner{
+  height: 5rem;
+}
+#spinner{
+  margin: 1rem;
+  width: 3rem;
+  display: none;
+}

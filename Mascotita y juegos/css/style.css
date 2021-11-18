@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+:root {
+  --bgColorLight: #7f7f7f;
+  --bgColorDark: #58555a;
+  --textColor: #fbf37c;
+  --fontFamily: "VT323", monospace;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--bgColorLight);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  background-color: var(--bgColorDark);
+  background-size: cover;
+  font-family: var(--fontFamily);
+  font-size: 2rem;
+  color: var(--textColor);
+  width: 50vw;
+  box-shadow: rgb(0 0 0 / 70%) 0px 0px 10px 3px;
+  margin: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div {
+  height: 30vh;
+}
+div#botones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+button {
+  background-color: var(--bgColorDark);
+  color: var(--textColor);
+  font-family: var(--fontFamily);
+  font-size: 2rem;
+  border-style: none;
+}
+.fa-solid:hover {
+  animation-name: latente;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 900ms;
+}
+/* :hover::after{
+    content:"_";
+    animation-name: latente;
+    animation-timing-function: ease;
+    animation-iteration-count:infinite;
+    animation-duration: 1000ms;
+} */
+@keyframes latente {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}

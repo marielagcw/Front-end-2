@@ -58,6 +58,7 @@ window.addEventListener("load", function () {
   /* ------------------------ Conexión con el servidor ------------------------ */
 
   function loginPost(data) {
+    mostrarSpinner();
     const settings = {
       method: "POST",
       headers: {
@@ -68,6 +69,7 @@ window.addEventListener("load", function () {
     fetch(apiUrlLogin, settings)
       .then((response) => response.json())
       .then((data) => {
+        ocultarSpinner();
         if (data.jwt) {
           localStorage.setItem("token", data.jwt);
           location.href = "./mis-tareas.html";
@@ -85,3 +87,11 @@ window.addEventListener("load", function () {
       });
   }
 });
+/* --------------------------------- Spinner -------------------------------- */
+const spinner = document.querySelector("#spinner");
+function mostrarSpinner(){
+  spinner.style.display = "block";
+}
+function ocultarSpinner(){
+spinner.style.display = "none";
+}
