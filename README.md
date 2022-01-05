@@ -14,6 +14,7 @@ Desde el front aprendimos a manejar todas esas funciones, haciendo validaciones,
 Todavía falta mucho camino por recorrer, pero estamos dando pasos súper importantes!
 
 Podés conocer la app directamente en el siguiente link:
+
 https://marielagcw.github.io/Front-end-2/Semana%205%20FE2/Clase15+ToDo%20-%20Funcionando//
 
 Te invito a conocer también un proyecto que estoy trabajando desde el primer tramo de la carrera y que finalmente le di forma en Figma.
