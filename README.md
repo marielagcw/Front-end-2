@@ -1,6 +1,6 @@
 # Front-end-2
 Hola! Te doy la bienvenida a mi segundo repositorio!
-En la materia Front-End 2 profundizamos mucho en JavaScript.
+En la materia Front-End 2 de la carrera Certified Tech Developer de Digital House profundizamos mucho en JavaScript.
 En lo personal aprendí mucho sobre:
 • Interpretar código que ya venía dado;
 • Trabajar con formularios y datos ingresados por el usuario;
@@ -28,11 +28,11 @@ https://www.figma.com/proto/1nAVtEMshbFhehOXzxOCOh/Mascotita?node-id=7%3A235&sta
 
 ☆*: .｡. o(≧▽≦)o .｡.:*☆
 
-Hello! You welcome to my second repository! In the Front-End 2 subject, we went very deep into JavaScript. We learned about: • Interpreting code; • Work with forms and data entered by the user; • Manipulate the BOM and DOM from JS; • Work with a Web API and libraries.
+Hello! Welcome to my second repository! In the Front-End 2 subject at the Certified Tech Developer by Digital House, we went very deep into JavaScript. We learned about: • Interpreting code; • Work with forms and data entered by the user; • Manipulate the BOM and DOM from JS; • Work with a Web API and libraries.
 
-The most important job we had was the To-Do App. Thanks to the Frontend 2 professors we have a Rest API to work all the requests and responses to an API from the front. This work was intense! Because the To-Do API allows us to do many tasks (register a new user, log in with an existing user, create a new task, change an existing task, get a list of user tasks, access a specific user task, and remove a task). From the front we learned to manage all these functions, doing validations, learning about authentication and security, managing errors, using Postman to conduct testing simultaneously with development, creation of animations, use of libraries to improve the user interface, and most importantly → know the good practices to apply them in each step we take! There is still a long way to go, but we are taking super important steps!
+The most important assignment we had was a To-Do App. Thanks to the Frontend 2 professors we have a Rest API to work all the requests and responses to an API from the front. This work was intense! Because the To-Do API allows us to do many tasks (register a new user, log in with an existing user, create a new task, change an existing task, get a list of user tasks, access a specific user task, and remove a task). From the front we learned to manage all these functions, doing validations, learning about authentication and security, managing errors, using Postman to conduct testing simultaneously with development, creation of animations, use of libraries to improve the user interface, and most importantly → know the good practices to apply them in each step we take! There is still a long way to go, but we are taking super important steps!
 
-You can know the app directly at the following link:
+You can get to know the app at the following link:
 
 https://marielagcw.github.io/Front-end-2/Semana%205%20FE2/Clase15+ToDo%20-%20Funcionando//
 
