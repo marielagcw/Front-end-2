@@ -26,3 +26,18 @@ Si querés conocer mi prototipo de Mascotita visitá el siguiente enlace:
 
 https://www.figma.com/proto/1nAVtEMshbFhehOXzxOCOh/Mascotita?node-id=7%3A235&starting-point-node-id=7%3A235&show-proto-sidebar=1
 
+☆*: .｡. o(≧▽≦)o .｡.:*☆
+
+Hello! You welcome to my second repository! In the Front-End 2 subject, we went very deep into JavaScript. We learned about: • Interpreting code; • Work with forms and data entered by the user; • Manipulate the BOM and DOM from JS; • Work with a Web API and libraries.
+
+The most important job we had was the To-Do App. Thanks to the Frontend 2 professors we have a Rest API to work all the requests and responses to an API from the front. This work was intense! Because the To-Do API allows us to do many tasks (register a new user, log in with an existing user, create a new task, change an existing task, get a list of user tasks, access a specific user task, and remove a task). From the front we learned to manage all these functions, doing validations, learning about authentication and security, managing errors, using Postman to conduct testing simultaneously with development, creation of animations, use of libraries to improve the user interface, and most importantly → know the good practices to apply them in each step we take! There is still a long way to go, but we are taking super important steps!
+
+You can know the app directly at the following link:
+
+https://marielagcw.github.io/Front-end-2/Semana%205%20FE2/Clase15+ToDo%20-%20Funcionando//
+
+I invite you to also know a project that I have been working on since the first section of the career and that I finally gave shape to Figma. It is a virtual pet, where I will be applying JavaScript and design patterns to improve the code. It also helped me to learn a little more about design tools like Figma and take advantage of all its functionalities! The work is in progress, but very soon it will also be in this repo ヾ (≧ ▽ ≦ *) o
+
+If you want to know my prototype of Mascotita visit the following link:
+
+https://www.figma.com/proto/1nAVtEMshbFhehOXzxOCOh/Mascotita?node-id=7%3A235&starting-point-node-id=7%3A235&show-proto-sidebar=1
